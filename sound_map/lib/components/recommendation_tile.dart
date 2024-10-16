@@ -1,0 +1,110 @@
+import 'dart:convert'; // json decoding
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+class VideoList extends StatefulWidget {
+  const VideoList({super.key});
+
+  @override
+  State<VideoList> createState() => _VideoListState();
+}
+
+class _VideoListState extends State<VideoList> {
+  List<dynamic> _videoList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadJsonData();
+  }
+
+  // assets에서 JSON 파일 불러오기
+  Future<void> _loadJsonData() async {
+    try {
+      // rootBundle을 통해 assets에서 파일을 불러옴
+      final String response = await rootBundle.loadString('assets/video_info.json');
+      final List<dynamic> jsonData = jsonDecode(response);
+      setState(() {
+        _videoList = jsonData;
+      });
+    } catch (e) {
+      print('Error reading JSON file: $e');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        width:  MediaQuery.of(context).size.width * 0.4,
+
+        child: _videoList.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : ListView.builder(
+          itemCount: _videoList.length,
+          itemBuilder: (context, index) {
+            final video = _videoList[index];
+            final String videoId = video['id'];
+            final String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
+
+            return Padding(
+                padding: const EdgeInsets.all(5.0),
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 썸네일 이미지
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                        child: Image.network(
+                          thumbnailUrl,
+                          width: double.infinity,
+                          height: 200,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // title
+                          Text(
+                            video['title'],
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          SizedBox(height: 5),
+
+                          // uploader
+                          Text(
+                            'Uploaded by: ${video['uploader']}',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            );
+          },
+        )
+      ),
+    );
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sound_map/components/recommendation_tile.dart';
 
 import '../components/feature_buttons.dart';
 import '../components/youtube_tile.dart';
@@ -13,8 +14,8 @@ class SecondUi extends StatelessWidget {
     return  Container(
       child: Row(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.4,
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
             child: Column(
                 children: [
                   //feature buttons
@@ -26,8 +27,13 @@ class SecondUi extends StatelessWidget {
             ),
           ),
 
-          // song recommendation tiles
+          // SizedBox(width: MediaQuery.of(context).size.width * 0.2 - 40),
 
+          // song recommendation tiles
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            child: VideoList(),
+          ),
         ],
       ),
     );

@@ -16,5 +16,5 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       theme: ThemeData(primarySwatch: Colors.grey),
     );
-}
+  }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sound_map/UI/first_ui.dart';
 import 'package:sound_map/UI/second_ui.dart';
-import '../components/feature_buttons.dart';
-import '../components/youtube_tile.dart';
 
 class DesktopBody extends StatefulWidget {
   const DesktopBody({super.key});
