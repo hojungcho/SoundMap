@@ -8,7 +8,7 @@ const String apiKey = 'AIzaSyCKlkmjaYfjfgNmS5zjer10LfDF5SaWjIs';
 class YoutubeTile extends StatefulWidget {
   final String ytUrl;  // 외부에서 URL을 전달받음
 
-  YoutubeTile({required this.ytUrl});
+  const YoutubeTile({super.key, required this.ytUrl});
 
   @override
   _YoutubeTileState createState() => _YoutubeTileState();
@@ -38,10 +38,15 @@ class _YoutubeTileState extends State<YoutubeTile> {
           children: [
             // 썸네일이 있을 경우 표시
             if (videoData != null && videoData!['items'] != null)
-              Image.network(
-                videoData!['items'][0]['snippet']['thumbnails']['high']['url'],  // 썸네일 URL 추출
-                height: 230,
-                fit: BoxFit.cover,
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5.0),
+                  child: Image.network(
+                    videoData!['items'][0]['snippet']['thumbnails']['high']['url'],  // 썸네일 URL 추출
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             SizedBox(height: 10.0),
 

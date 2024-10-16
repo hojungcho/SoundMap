@@ -15,7 +15,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
       child: Padding(
         padding: const EdgeInsets.only(top:20.0, left: 20.0, right: 20.0),
