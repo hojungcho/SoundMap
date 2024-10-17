@@ -35,9 +35,10 @@ class _VideoListState extends State<VideoList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.only(top:30.0, left: 20.0, right: 20.0),
       child: SizedBox(
         width:  MediaQuery.of(context).size.width * 0.4,
+        //height: MediaQuery.of(context).size.height * 0.8,
 
         child: _videoList.isEmpty
             ? Center(child: CircularProgressIndicator())

@@ -38,7 +38,7 @@ class _DesktopBodyState extends State<DesktopBody> {
         
             // Container: sound map & searchbar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
                 height: 350,
                 width: MediaQuery.of(context).size.width,
@@ -57,7 +57,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                     BoxShadow(
                       color: Colors.white,
                       blurRadius: 15,
-                      offset: const Offset(-4, -4),
+                      offset: const Offset(-2, -2),
                     ),
                   ]
                 ),
