@@ -28,7 +28,7 @@ class _DesktopBodyState extends State<DesktopBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade900,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -42,11 +42,24 @@ class _DesktopBodyState extends State<DesktopBody> {
               child: Container(
                 height: 350,
                 width: MediaQuery.of(context).size.width,
-                decoration: ShapeDecoration(
-                  color: Colors.white10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    // darker shadow on bottom right
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      blurRadius: 15,
+                      offset: const Offset(4, 4),
+                    ),
+
+                    // lighter shadow on top left
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 15,
+                      offset: const Offset(-2, -2),
+                    ),
+                  ]
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(40.0),
@@ -81,18 +94,21 @@ class _DesktopBodyState extends State<DesktopBody> {
                             fillColor: Colors.white,
                             suffixIcon: Padding(
                               padding: const EdgeInsetsDirectional.only(end: 8.0),
-                              child: TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isFirstUI = false;
-                                  });
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.black,
-                                    foregroundColor: Colors.grey[300]),
-                                child: const Text(
-                                  'Generate',
-                                  style: TextStyle(color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isFirstUI = false;
+                                    });
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.blueAccent,
+                                      foregroundColor: Colors.blueGrey),
+                                  child: const Text(
+                                    'Generate',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),

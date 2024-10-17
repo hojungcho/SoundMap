@@ -12,27 +12,41 @@ class SecondUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      child: Row(
+      child: Column(
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: Column(
-                children: [
-                  //feature buttons
-                  FeatureButtons(),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: Row(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Column(
+                      children: [
+                        //feature buttons
+                        FeatureButtons(),
 
-                  // youtube tile
-                  YoutubeTile(ytUrl: yt_url),
-                ]
+                        // youtube tile
+                        YoutubeTile(ytUrl: yt_url),
+                      ]
+                  ),
+                ),
+
+                // song recommendation tiles - feature filter
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: VideoList(),
+                ),
+              ],
             ),
           ),
 
-          // SizedBox(width: MediaQuery.of(context).size.width * 0.2 - 40),
-
-          // song recommendation tiles
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: VideoList(),
+          // song recommendation tiles - default
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              color: Colors.white,
+                child: Text('RECOMMENDATION_TABLE')
+            ),
           ),
         ],
       ),
