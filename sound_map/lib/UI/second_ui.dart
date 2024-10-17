@@ -31,8 +31,6 @@ class SecondUi extends StatelessWidget {
                   ),
                 ),
 
-                // SizedBox(width: MediaQuery.of(context).size.width * 0.2 - 40),
-
                 // song recommendation tiles - feature filter
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
@@ -47,7 +45,7 @@ class SecondUi extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Container(
               color: Colors.white,
-                child: Text('Test')
+                child: Text('RECOMMENDATION_TABLE')
             ),
           ),
         ],
