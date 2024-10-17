@@ -13,7 +13,6 @@ class _DesktopBodyState extends State<DesktopBody> {
   bool _isFirstUI = true; // 상태 변수
   final TextEditingController _controller = TextEditingController();
 
-  @override
   void _toggleUI() {
     setState(() {
       _isFirstUI = !_isFirstUI; // 상태 값 변경
