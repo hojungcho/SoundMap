@@ -94,18 +94,21 @@ class _DesktopBodyState extends State<DesktopBody> {
                             fillColor: Colors.white,
                             suffixIcon: Padding(
                               padding: const EdgeInsetsDirectional.only(end: 8.0),
-                              child: TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isFirstUI = false;
-                                  });
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.black,
-                                    foregroundColor: Colors.grey[300]),
-                                child: const Text(
-                                  'Generate',
-                                  style: TextStyle(color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isFirstUI = false;
+                                    });
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.blueAccent,
+                                      foregroundColor: Colors.blueGrey),
+                                  child: const Text(
+                                    'Generate',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
