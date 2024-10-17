@@ -28,7 +28,7 @@ class _DesktopBodyState extends State<DesktopBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade900,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -38,15 +38,28 @@ class _DesktopBodyState extends State<DesktopBody> {
         
             // Container: sound map & searchbar
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 40.0),
               child: Container(
                 height: 350,
                 width: MediaQuery.of(context).size.width,
-                decoration: ShapeDecoration(
-                  color: Colors.white10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    // darker shadow on bottom right
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      blurRadius: 15,
+                      offset: const Offset(4, 4),
+                    ),
+
+                    // lighter shadow on top left
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 15,
+                      offset: const Offset(-4, -4),
+                    ),
+                  ]
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(40.0),
