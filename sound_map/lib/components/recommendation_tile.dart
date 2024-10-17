@@ -1,7 +1,6 @@
 import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoList extends StatefulWidget {
   const VideoList({super.key});
@@ -37,7 +36,7 @@ class _VideoListState extends State<VideoList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Container(
+      child: SizedBox(
         width:  MediaQuery.of(context).size.width * 0.4,
 
         child: _videoList.isEmpty
@@ -56,18 +55,18 @@ class _VideoListState extends State<VideoList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)
                 ),
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // 썸네일 이미지
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                        borderRadius: BorderRadius.circular(10),
                         child: Image.network(
                           thumbnailUrl,
-                          width: double.infinity,
-                          height: 200,
+                          width: 100,
+                          //width: double.infinity,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -78,21 +77,31 @@ class _VideoListState extends State<VideoList> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // title
-                          Text(
-                            video['title'],
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              video['title'],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                              ),
                             ),
                           ),
                           SizedBox(height: 5),
 
                           // uploader
-                          Text(
-                            'Uploaded by: ${video['uploader']}',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            child: Text(
+                              'Uploaded by: ${video['uploader']}',
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey
+                              ),
                             ),
                           )
                         ],

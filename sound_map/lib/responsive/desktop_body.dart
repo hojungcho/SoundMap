@@ -11,7 +11,6 @@ class DesktopBody extends StatefulWidget {
 
 class _DesktopBodyState extends State<DesktopBody> {
   bool _isFirstUI = true; // 상태 변수
-  static const String apiKey = 'AIzaSyCKlkmjaYfjfgNmS5zjer10LfDF5SaWjIs';
   final TextEditingController _controller = TextEditingController();
 
   @override

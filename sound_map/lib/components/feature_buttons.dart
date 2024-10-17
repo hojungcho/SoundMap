@@ -10,7 +10,7 @@ class FeatureButtons extends StatefulWidget {
 class _FeatureSelectorState extends State<FeatureButtons> {
   var feature = ['melody', 'tempo', 'bpm', 'artist', 'lyrics']; // Feature list
   var feature_colors = [Colors.orange, Colors.green, Colors.pink, Colors.blue, Colors.purple];
-  List<String> featureList = []; // Selected feature list
+  List<String> selected_feauture = []; // Selected feature list
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +26,18 @@ class _FeatureSelectorState extends State<FeatureButtons> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    featureList.contains(feature[i]) ? featureList.remove(feature[i]) : featureList.add(feature[i]);
+                    selected_feauture.contains(feature[i]) ? selected_feauture.remove(feature[i]) : selected_feauture.add(feature[i]);
                   });
                 },
                 child: Container(
                   margin: EdgeInsets.all(5),
                   padding: EdgeInsets.symmetric(horizontal:  10, vertical: 5),
                   decoration: BoxDecoration(
-                    color: featureList.contains(feature[i]) ? feature_colors[i] : Colors.white,
+                    color: selected_feauture.contains(feature[i]) ? feature_colors[i] : Colors.white,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Text(feature[i],
-                    style: TextStyle(color: featureList.contains(feature[i]) ? Colors.white : feature_colors[i]),
+                    style: TextStyle(color: selected_feauture.contains(feature[i]) ? Colors.white : feature_colors[i]),
                   ),
                 ),
               )
