@@ -16,11 +16,18 @@ class YoutubeTile extends StatefulWidget {
 
 class _YoutubeTileState extends State<YoutubeTile> {
   Map<String, dynamic>? videoData; // 영상 정보 저장 변수
+  String? videoId;
 
   @override
   void initState() {
     super.initState();
-    _fetchVideoInfo();  // 위젯이 생성될 때 영상 정보 가져오기
+
+    // 위젯이 생성될 때 영상 정보 가져오기
+    _fetchVideoInfo();
+
+    // Youtube URL에서 비디오 ID 추출
+    videoId = YoutubePlayer.convertUrlToId(widget.ytUrl);
+
   }
 
   @override
@@ -45,7 +52,7 @@ class _YoutubeTileState extends State<YoutubeTile> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
                   child: Image.network(
-                    videoData!['items'][0]['snippet']['thumbnails']['high']['url'],  // 썸네일 URL 추출
+                    'https://img.youtube.com/vi/$videoId/0.jpg', // 썸네일 URL 추출
                     fit: BoxFit.cover,
                     errorBuilder: (BuildContext context, Object expection, StackTrace? stackTrace){
                       return Column(
@@ -87,16 +94,6 @@ class _YoutubeTileState extends State<YoutubeTile> {
                 ),
               ),
             ),
-
-/*
-            Expanded(
-              child: SingleChildScrollView(
-                child: videoData != null
-                    ? Text(jsonEncode(videoData))  // 전체 영상 정보 출력
-                    : Text('영상 정보를 불러오는 중...'),
-              ),
-            ),
-*/
           ],
         ),
       ),

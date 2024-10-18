@@ -1,8 +1,10 @@
 import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sound_map/components/audio_button.dart';
 
 class VideoList_2 extends StatefulWidget {
+
   const VideoList_2({super.key});
 
   @override
@@ -60,10 +62,11 @@ class _VideoListState extends State<VideoList_2> {
                   style: TextStyle(color: Colors.white)
               )),
               DataCell(
-                IconButton(
-                  icon: Icon(Icons.play_circle),
-                  onPressed: (){},
-                )
+                // button
+                  IconButton(
+                    icon: Icon(Icons.play_circle),
+                    onPressed: (){},
+                  )
               ),
             ]);
           }).toList(),
