@@ -18,7 +18,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
       child: Padding(
-        padding: const EdgeInsets.only(top:40.0, left: 10.0, right: 10.0),
+        padding: const EdgeInsets.only(top:30.0, left: 10.0, right: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
