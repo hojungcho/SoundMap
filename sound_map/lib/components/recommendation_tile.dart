@@ -4,14 +4,14 @@ import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class VideoList extends StatefulWidget {
-  const VideoList({super.key});
+class VideoList_1 extends StatefulWidget {
+  const VideoList_1({super.key});
 
   @override
-  State<VideoList> createState() => _VideoListState();
+  State<VideoList_1> createState() => _VideoListState();
 }
 
-class _VideoListState extends State<VideoList> {
+class _VideoListState extends State<VideoList_1> {
   List<dynamic> _videoList = [];
 
   @override
@@ -37,10 +37,9 @@ class _VideoListState extends State<VideoList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:30.0, left: 20.0, right: 20.0),
+      padding: const EdgeInsets.only(top:40.0, left: 20.0, right: 20.0),
       child: SizedBox(
         width:  MediaQuery.of(context).size.width * 0.4,
-        //height: MediaQuery.of(context).size.height * 0.8,
 
         child: _videoList.isEmpty
             ? Center(child: CircularProgressIndicator())
@@ -106,7 +105,7 @@ class _VideoListState extends State<VideoList> {
                                 color: Colors.grey
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     )

@@ -35,13 +35,13 @@ class _DesktopBodyState extends State<DesktopBody> {
             const SizedBox(
               height: 30,
             ),
-        
+
             // Container: sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
-                height: 350,
-                width: MediaQuery.of(context).size.width,
+                height: 300,
+                width: MediaQuery.of(context).size.width * 0.9,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade900,
                   borderRadius: BorderRadius.circular(10),
@@ -82,7 +82,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                         ),
                       ),
                       const SizedBox(height: 50),
-        
+
                       // Youtube URL text field
                       SizedBox(
                         width: 550,
@@ -133,8 +133,9 @@ class _DesktopBodyState extends State<DesktopBody> {
               ),
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: _isFirstUI ? FirstUi() : SecondUi(yt_url: _controller.text)
+                height: MediaQuery.of(context).size.height * 2,
+                child: _isFirstUI ?
+                FirstUi() : SecondUi(yt_url: _controller.text)
             )
           ],
         ),
