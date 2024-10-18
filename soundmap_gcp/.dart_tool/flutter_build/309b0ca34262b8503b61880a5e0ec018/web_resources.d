@@ -1,0 +1,1 @@
+ build\\web\\manifest.json:  C:\\DEV\\soundmap_gcp\\web\\index.html C:\\DEV\\soundmap_gcp\\web\\manifest.json
