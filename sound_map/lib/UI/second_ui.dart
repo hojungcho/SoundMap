@@ -41,13 +41,11 @@ class SecondUi extends StatelessWidget {
         ),
 
         // song recommendation tiles - default
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: VideoList_2(),
-            ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: VideoList_2(),
           ),
         ),
       ],

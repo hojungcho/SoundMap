@@ -44,7 +44,10 @@ class _VideoListState extends State<VideoList_2> {
             DataColumn(label: Text('Title',
               style: TextStyle(color: Colors.white)
             )),
-            DataColumn(label: Text('Uploader',
+            DataColumn(label: Text('Artist',
+                style: TextStyle(color: Colors.white)
+            )),
+            DataColumn(label: Text('Player',
                 style: TextStyle(color: Colors.white)
             )),
           ],
@@ -56,6 +59,12 @@ class _VideoListState extends State<VideoList_2> {
               DataCell(Text(video['uploader'],
                   style: TextStyle(color: Colors.white)
               )),
+              DataCell(
+                IconButton(
+                  icon: Icon(Icons.play_circle),
+                  onPressed: (){},
+                )
+              ),
             ]);
           }).toList(),
         ),
