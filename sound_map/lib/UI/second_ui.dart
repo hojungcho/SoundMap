@@ -14,7 +14,7 @@ class SecondUi extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Column(
       children: [
-        Container(
+        SizedBox(
           height:550,
           child: Row(
             children: [
