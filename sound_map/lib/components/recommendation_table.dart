@@ -1,7 +1,7 @@
 import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sound_map/components/audio_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VideoList_2 extends StatefulWidget {
 
@@ -65,7 +65,15 @@ class _VideoListState extends State<VideoList_2> {
                 // button
                   IconButton(
                     icon: Icon(Icons.play_circle),
-                    onPressed: (){},
+                    onPressed: () async {
+                      String videoId = video['id'];
+                      final String videoUrl = 'https://www.youtube.com/watch?v=$videoId';
+                      if (await canLaunchUrl(Uri.parse(videoUrl))) {
+                        await launchUrl(Uri.parse(videoUrl));
+                      } else {
+                        throw 'Could not launch $videoUrl';
+                      }
+                    },
                   )
               ),
             ]);

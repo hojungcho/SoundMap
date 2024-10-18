@@ -35,6 +35,7 @@ class _YoutubeTileState extends State<YoutubeTile> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
+        height: 450,
         width: MediaQuery.of(context).size.width * 0.4,
         decoration: BoxDecoration(
           color: Colors.white,
