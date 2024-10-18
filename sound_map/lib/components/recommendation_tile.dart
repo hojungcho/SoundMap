@@ -81,6 +81,16 @@ class _VideoListState extends State<VideoList_1> {
                               thumbnailUrl,
                               width: 100,
                               fit: BoxFit.cover,
+                              errorBuilder: (BuildContext context, Object expection, StackTrace? stackTrace){
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.error, color: Colors.red, size: 50),
+                                    SizedBox(height: 5),
+                                    Text('Failed to load image', style: TextStyle(color: Colors.red)),
+                                  ],
+                                );
+                              },
                             ),
                           ),
                         ),

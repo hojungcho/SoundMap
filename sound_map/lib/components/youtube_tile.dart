@@ -47,6 +47,16 @@ class _YoutubeTileState extends State<YoutubeTile> {
                   child: Image.network(
                     videoData!['items'][0]['snippet']['thumbnails']['high']['url'],  // 썸네일 URL 추출
                     fit: BoxFit.cover,
+                    errorBuilder: (BuildContext context, Object expection, StackTrace? stackTrace){
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.error, color: Colors.red, size: 100),
+                          SizedBox(height: 5),
+                          Text('Failed to load image', style: TextStyle(color: Colors.red)),
+                        ],
+                      );
+                    },
                   ),
                 ),
               ),
