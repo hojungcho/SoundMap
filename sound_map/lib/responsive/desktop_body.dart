@@ -13,7 +13,6 @@ class _DesktopBodyState extends State<DesktopBody> {
   bool _isFirstUI = true; // 상태 변수
   final TextEditingController _controller = TextEditingController();
 
-  @override
   void _toggleUI() {
     setState(() {
       _isFirstUI = !_isFirstUI; // 상태 값 변경
@@ -29,25 +28,38 @@ class _DesktopBodyState extends State<DesktopBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade900,
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(
               height: 30,
             ),
-        
+
             // Container: sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
-                height: 350,
-                width: MediaQuery.of(context).size.width,
-                decoration: ShapeDecoration(
-                  color: Colors.white10,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                height: 300,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade900,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    // darker shadow on bottom right
+                    BoxShadow(
+                      color: Colors.grey.shade300,
+                      blurRadius: 15,
+                      offset: const Offset(4, 4),
+                    ),
+
+                    // lighter shadow on top left
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 15,
+                      offset: const Offset(-2, -2),
+                    ),
+                  ]
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(40.0),
@@ -70,7 +82,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                         ),
                       ),
                       const SizedBox(height: 50),
-        
+
                       // Youtube URL text field
                       SizedBox(
                         width: 550,
@@ -82,18 +94,21 @@ class _DesktopBodyState extends State<DesktopBody> {
                             fillColor: Colors.white,
                             suffixIcon: Padding(
                               padding: const EdgeInsetsDirectional.only(end: 8.0),
-                              child: TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isFirstUI = false;
-                                  });
-                                },
-                                style: TextButton.styleFrom(
-                                    backgroundColor: Colors.black,
-                                    foregroundColor: Colors.grey[300]),
-                                child: const Text(
-                                  'Generate',
-                                  style: TextStyle(color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isFirstUI = false;
+                                    });
+                                  },
+                                  style: TextButton.styleFrom(
+                                      backgroundColor: Colors.blueAccent,
+                                      foregroundColor: Colors.blueGrey),
+                                  child: const Text(
+                                    'Generate',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
@@ -118,8 +133,9 @@ class _DesktopBodyState extends State<DesktopBody> {
               ),
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: _isFirstUI ? FirstUi() : SecondUi(yt_url: _controller.text)
+                height: MediaQuery.of(context).size.height * 2,
+                child: _isFirstUI ?
+                FirstUi() : SecondUi(yt_url: _controller.text)
             )
           ],
         ),

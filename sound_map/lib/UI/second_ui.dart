@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sound_map/components/recommendation_table.dart';
 import 'package:sound_map/components/recommendation_tile.dart';
 
 import '../components/feature_buttons.dart';
@@ -11,31 +12,43 @@ class SecondUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      child: Row(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: Column(
-                children: [
-                  //feature buttons
-                  FeatureButtons(),
+    return  Column(
+      children: [
+        SizedBox(
+          height:550,
+          child: Row(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: Column(
+                    children: [
+                      //feature buttons
+                      FeatureButtons(),
 
-                  // youtube tile
-                  YoutubeTile(ytUrl: yt_url),
-                ]
-            ),
+                      // youtube tile
+                      YoutubeTile(ytUrl: yt_url),
+                    ]
+                ),
+              ),
+
+              // song recommendation tiles - feature filter
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: VideoList_1(),
+              ),
+            ],
           ),
+        ),
 
-          // SizedBox(width: MediaQuery.of(context).size.width * 0.2 - 40),
-
-          // song recommendation tiles
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: VideoList(),
+        // song recommendation tiles - default
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: VideoList_2(),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

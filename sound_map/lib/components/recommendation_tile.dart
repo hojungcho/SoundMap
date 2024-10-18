@@ -1,15 +1,18 @@
+// feature filtering 기반
+
 import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class VideoList extends StatefulWidget {
-  const VideoList({super.key});
+class VideoList_1 extends StatefulWidget {
+  const VideoList_1({super.key});
 
   @override
-  State<VideoList> createState() => _VideoListState();
+  State<VideoList_1> createState() => _VideoListState();
 }
 
-class _VideoListState extends State<VideoList> {
+class _VideoListState extends State<VideoList_1> {
   List<dynamic> _videoList = [];
 
   @override
@@ -35,84 +38,95 @@ class _VideoListState extends State<VideoList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(top:40.0, left: 20.0, right: 20.0),
       child: SizedBox(
-        width:  MediaQuery.of(context).size.width * 0.4,
+          width:  MediaQuery.of(context).size.width * 0.4,
 
-        child: _videoList.isEmpty
-            ? Center(child: CircularProgressIndicator())
-            : ListView.builder(
-          itemCount: _videoList.length,
-          itemBuilder: (context, index) {
-            final video = _videoList[index];
-            final String videoId = video['id'];
-            final String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
+          child: _videoList.isEmpty
+              ? Center(child: CircularProgressIndicator())
+              : ListView.builder(
+            itemCount: _videoList.length,
+            itemBuilder: (context, index) {
+              final video = _videoList[index];
+              final String videoId = video['id'];
+              final String thumbnailUrl = 'https://img.youtube.com/vi/$videoId/0.jpg';
 
-            return Padding(
+              return Padding(
                 padding: const EdgeInsets.all(5.0),
-              child: Card(
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // 썸네일 이미지
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          thumbnailUrl,
-                          width: 100,
-                          //width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.all(5.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // title
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: Text(
-                              video['title'],
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold
-                              ),
+                child: Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+
+                  child: InkWell(
+                    onTap: () async {
+                      final String videoUrl = 'https://www.youtube.com/watch?v=$videoId';
+                      if (await canLaunchUrl(Uri.parse(videoUrl))) {
+                        await launchUrl(Uri.parse(videoUrl));
+                      } else {
+                        throw 'Could not launch $videoUrl';
+                      }
+                    },
+
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 썸네일 이미지
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              thumbnailUrl,
+                              width: 100,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                          SizedBox(height: 5),
-
-                          // uploader
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.3,
-                            child: Text(
-                              'Uploaded by: ${video['uploader']}',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // title
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                child: Text(
+                                  video['title'],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                ),
                               ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                              SizedBox(height: 5),
+                    
+                              // uploader
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                child: Text(
+                                  'Uploaded by: ${video['uploader']}',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
-        )
+              );
+            },
+          )
       ),
     );
   }
