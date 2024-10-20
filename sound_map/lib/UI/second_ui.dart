@@ -22,8 +22,12 @@ class SecondUi extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Column(
                     children: [
+                      const SizedBox(height: 30),
+
                       //feature buttons
                       FeatureButtons(),
+
+                      const SizedBox(height: 10),
 
                       // youtube tile
                       YoutubeTile(ytUrl: yt_url),
@@ -35,16 +39,20 @@ class SecondUi extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: Column(
                   children: [
+                    const SizedBox(height: 30),
+
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Text(
                         'Feature List',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20.0
+                          fontSize: 25.0,
                         ),
                       ),
                     ),
+
+                    const SizedBox(height: 10),
 
                     // song recommendation tiles - feature filter
                     VideoList_1(),
@@ -55,8 +63,10 @@ class SecondUi extends StatelessWidget {
           ),
         ),
 
+        const SizedBox(height: 30),
+
         Padding(
-          padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -64,7 +74,7 @@ class SecondUi extends StatelessWidget {
                 'Basic List',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30.0,
+                  fontSize: 25.0,
                 ),
               ),
             ],

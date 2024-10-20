@@ -1,4 +1,4 @@
-import 'dart:convert'; // json decoding
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';

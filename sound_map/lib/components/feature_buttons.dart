@@ -18,7 +18,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
       child: Padding(
-        padding: const EdgeInsets.only(top:30.0, left: 10.0, right: 10.0),
+        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,8 +36,12 @@ class _FeatureSelectorState extends State<FeatureButtons> {
                     color: selected_feauture.contains(feature[i]) ? feature_colors[i] : Colors.white,
                     borderRadius: BorderRadius.circular(5),
                   ),
-                  child: Text(feature[i],
-                    style: TextStyle(color: selected_feauture.contains(feature[i]) ? Colors.white : feature_colors[i]),
+                  child: Text(
+                    feature[i],
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: selected_feauture.contains(feature[i]) ? Colors.white : Colors.black
+                    ),
                   ),
                 ),
               )

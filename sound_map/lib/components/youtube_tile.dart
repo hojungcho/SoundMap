@@ -1,12 +1,12 @@
-import 'dart:convert';      // JSON 처리
-import 'package:flutter/material.dart';   // Flutter UI
-import 'package:http/http.dart' as http;  // HTTP 요청 처리
-import 'package:youtube_player_flutter/youtube_player_flutter.dart'; // YouTube Player 패키지
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 const String apiKey = 'AIzaSyCKlkmjaYfjfgNmS5zjer10LfDF5SaWjIs';
 
 class YoutubeTile extends StatefulWidget {
-  final String ytUrl;  // 외부에서 URL을 전달받음
+  final String ytUrl; // url 전달 변수
 
   const YoutubeTile({super.key, required this.ytUrl});
 
@@ -22,10 +22,8 @@ class _YoutubeTileState extends State<YoutubeTile> {
   void initState() {
     super.initState();
 
-    // 위젯이 생성될 때 영상 정보 가져오기
     _fetchVideoInfo();
 
-    // Youtube URL에서 비디오 ID 추출
     videoId = YoutubePlayer.convertUrlToId(widget.ytUrl);
 
   }
@@ -33,10 +31,10 @@ class _YoutubeTileState extends State<YoutubeTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
       child: Container(
-        height: 450,
         width: MediaQuery.of(context).size.width * 0.4,
+        height: 450,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -46,7 +44,6 @@ class _YoutubeTileState extends State<YoutubeTile> {
             :Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 썸네일이 있을 경우 표시
             if (videoData != null && videoData!['items'] != null)
               Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -68,7 +65,8 @@ class _YoutubeTileState extends State<YoutubeTile> {
                   ),
                 ),
               ),
-            SizedBox(height: 10.0),
+
+            const SizedBox(height: 10.0),
 
             Padding(
               padding: const EdgeInsets.all(5.0),
@@ -79,8 +77,8 @@ class _YoutubeTileState extends State<YoutubeTile> {
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
+                ),
               ),
-                  ),
             ),
 
             Padding(
@@ -140,4 +138,3 @@ class _YoutubeTileState extends State<YoutubeTile> {
     }
   }
 }
-
