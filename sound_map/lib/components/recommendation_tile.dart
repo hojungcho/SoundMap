@@ -91,9 +91,9 @@ class _VideoListState extends State<VideoList_1> {
                                   return Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.error, color: Colors.red, size: 50),
+                                      Icon(Icons.image_not_supported, color: Colors.black, size: 50),
                                       SizedBox(height: 5),
-                                      Text('Failed to load image', style: TextStyle(color: Colors.red)),
+                                      Text('Failed to load image', style: TextStyle(color: Colors.black)),
                                     ],
                                   );
                                 },
