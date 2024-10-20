@@ -132,11 +132,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
               ),
             ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height * 2,
-                child: _isFirstUI ?
-                FirstUi() : SecondUi(yt_url: _controller.text)
-            )
+            _isFirstUI ?
+            FirstUi() : SecondUi(yt_url: _controller.text)
           ],
         ),
       ),
