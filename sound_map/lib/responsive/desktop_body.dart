@@ -36,7 +36,7 @@ class _DesktopBodyState extends State<DesktopBody> {
               height: 30,
             ),
 
-            // Container: sound map & searchbar
+            // sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
