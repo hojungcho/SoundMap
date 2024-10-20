@@ -103,8 +103,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     });
                                   },
                                   style: TextButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.blueGrey),
+                                      backgroundColor: Colors.black,
+                                      foregroundColor: Colors.grey),
                                   child: const Text(
                                     'Generate',
                                     style: TextStyle(color: Colors.white),
