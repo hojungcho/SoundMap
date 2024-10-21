@@ -50,8 +50,7 @@ class _YoutubeTileState extends State<YoutubeTile> {
 
   Future<Map<String, dynamic>> _fetchVideoDetails(String videoId) async {
     const apiKey = 'AIzaSyCKlkmjaYfjfgNmS5zjer10LfDF5SaWjIs';
-    final url =
-        'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$videoId&key=$apiKey';
+    final url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$videoId&key=$apiKey';
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
@@ -95,9 +94,15 @@ class _YoutubeTileState extends State<YoutubeTile> {
       children: [
         Padding(
           padding: const EdgeInsets.all(5.0),
-          child: YoutubePlayer(
-            controller: _youtubePlayerController,
-            aspectRatio: 16 / 9,
+          child: Container(
+            width: 400,
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: YoutubePlayer(
+                controller: _youtubePlayerController,
+                //aspectRatio: 16 / 9,
+              ),
+            ),
           ),
         ),
         const SizedBox(height: 10.0),

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
@@ -32,7 +33,8 @@ class _FeatureSelectorState extends State<FeatureButtons> {
                     onTap: (){
                       setState(() {
                         selectedFeatures.contains(feature[i]) ? selectedFeatures.remove(feature[i]) : selectedFeatures.add(feature[i]);
-                        _saveSelectedFeaturesToJson();
+                        writeListToFile(selectedFeatures);
+                        // _saveSelectedFeaturesToJson();
                       });
                     },
                     child: Container(
@@ -59,6 +61,13 @@ class _FeatureSelectorState extends State<FeatureButtons> {
     );
   }
 
+  void writeListToFile(List<String> data) {
+    var file = File('selected_features.json');
+    var jsonData = jsonEncode({'data': data});
+    file.writeAsStringSync(jsonData);
+  }
+
+  /*
   void _saveSelectedFeaturesToJson() {
     // JSON 데이터 생성
     final jsonData = jsonEncode({'selectedFeatures': selectedFeatures});
@@ -75,5 +84,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
 
     html.Url.revokeObjectUrl(url); // 메모리 해제
   }
+
+   */
 
 }
