@@ -82,21 +82,7 @@ class _VideoListState extends State<VideoList_1> {
                             padding: const EdgeInsets.all(5.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                thumbnailUrl,
-                                width: 100,
-                                fit: BoxFit.cover,
-                                errorBuilder: (BuildContext context, Object expection, StackTrace? stackTrace){
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.image_not_supported, color: Colors.black, size: 50),
-                                      SizedBox(height: 5),
-                                      Text('Failed to load image', style: TextStyle(color: Colors.black)),
-                                    ],
-                                  );
-                                },
-                              ),
+                              child: Image.asset('assets/thumbnails/$videoId.jpg')
                             ),
                           ),
 
