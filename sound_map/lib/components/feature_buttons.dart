@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'dart:html' as html;
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class FeatureButtons extends StatefulWidget {
   const FeatureButtons({super.key});
@@ -26,17 +25,19 @@ class _FeatureSelectorState extends State<FeatureButtons> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                for (var i=0; i<feature.length; i++)
+                for (var i = 0; i < feature.length; i++)
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
-                        selectedFeatures.contains(feature[i]) ? selectedFeatures.remove(feature[i]) : selectedFeatures.add(feature[i]);
-                        _saveSelectedFeaturesToJson();
+                        selectedFeatures.contains(feature[i])
+                            ? selectedFeatures.remove(feature[i])
+                            : selectedFeatures.add(feature[i]);
+                        _sendSelectedFeaturesToServer();
                       });
                     },
                     child: Container(
                       margin: EdgeInsets.all(5),
-                      padding: EdgeInsets.symmetric(horizontal:  10, vertical: 5),
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: selectedFeatures.contains(feature[i]) ? featureColors[i] : Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -45,8 +46,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
                         feature[i],
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: selectedFeatures.contains(feature[i]) ? Colors.white : Colors.black
-                        ),
+                            color: selectedFeatures.contains(feature[i]) ? Colors.white : Colors.black),
                       ),
                     ),
                   )
@@ -58,21 +58,24 @@ class _FeatureSelectorState extends State<FeatureButtons> {
     );
   }
 
-  void _saveSelectedFeaturesToJson() {
-    // JSON 데이터 생성
+  // Method to send the selected features to the Python backend
+  Future<void> _sendSelectedFeaturesToServer() async {
     final jsonData = jsonEncode({'selectedFeatures': selectedFeatures});
+    final url = Uri.parse('http://localhost:5000/save_features'); // Replace with your Python backend URL
 
-    // Blob을 생성하여 파일로 변환
-    final bytes = utf8.encode(jsonData);
-    final blob = html.Blob([bytes]);
-    final url = html.Url.createObjectUrlFromBlob(blob);
-
-    // 링크 클릭 없이 자동으로 파일 다운로드 트리거
-    html.AnchorElement(href: url)
-      ..setAttribute('download', 'selected_features.json')
-      ..click(); // 수동 클릭 없이 바로 실행
-
-    html.Url.revokeObjectUrl(url); // 메모리 해제
+    try {
+      final response = await http.post(
+        url,
+        headers: {"Content-Type": "application/json"},
+        body: jsonData,
+      );
+      if (response.statusCode == 200) {
+        print("Features saved successfully!");
+      } else {
+        print("Failed to save features. Status code: ${response.statusCode}");
+      }
+    } catch (error) {
+      print("Error occurred: $error");
+    }
   }
-
 }
