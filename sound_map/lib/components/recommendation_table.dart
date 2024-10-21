@@ -24,7 +24,7 @@ class _VideoListState extends State<VideoList_2> {
   Future<void> _loadJsonData() async {
     try {
       final String response =
-      await rootBundle.loadString('assets/video_info.json');
+      await rootBundle.loadString('assets/initial_recommendation.json');
       final List<dynamic> jsonData = jsonDecode(response);
       setState(() {
         _videoList = jsonData;
