@@ -32,19 +32,22 @@ class _DesktopBodyState extends State<DesktopBody> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            /*
             const SizedBox(
               height: 30,
             ),
+
+             */
 
             // sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
-                height: 300,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: 350,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.only(bottomLeft:Radius.circular(10), bottomRight:Radius.circular(10)),
                   boxShadow: [
                     // darker shadow on bottom right
                     BoxShadow(
@@ -65,6 +68,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                   padding: const EdgeInsets.all(40.0),
                   child: Column(
                     children: [
+                      const SizedBox(height: 10),
                       InkWell(
                         onTap: (){
                           setState(() {
@@ -81,7 +85,7 @@ class _DesktopBodyState extends State<DesktopBody> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 70),
 
                       // Youtube URL text field
                       SizedBox(
@@ -96,18 +100,24 @@ class _DesktopBodyState extends State<DesktopBody> {
                               padding: const EdgeInsetsDirectional.only(end: 8.0),
                               child: Padding(
                                 padding: const EdgeInsets.all(3.0),
-                                child: TextButton(
+                                child: ElevatedButton(
                                   onPressed: () {
                                     setState(() {
                                       _isFirstUI = false;
                                     });
                                   },
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: Colors.black,
-                                      foregroundColor: Colors.grey),
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      foregroundColor: Colors.black,
+                                      shadowColor:Colors.black,
+                                      elevation: 10,
+                                  ),
                                   child: const Text(
                                     'Generate',
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold
+                                    ),
                                   ),
                                 ),
                               ),
