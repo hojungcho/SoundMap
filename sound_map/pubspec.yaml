@@ -76,6 +76,7 @@ flutter:
     - assets/recommendation.json
     - assets/thumbnails/
     - assets/soundMap.png
+    - assets/image/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
