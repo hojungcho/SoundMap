@@ -69,19 +69,23 @@ class _DesktopBodyState extends State<DesktopBody> {
                   child: Column(
                     children: [
                       const SizedBox(height: 10),
-                      IconButton(
-                          onPressed: (){
-                            setState(() {
-                              _isFirstUI = true;
-                              _controller.clear();
-                            });
-                          },
-                          icon: Image.asset(
-                            'assets/soundMap.png',
-                            width: 500,
-                            height: 150,
+                      InkWell(
+                        onTap: (){
+                          setState(() {
+                            _isFirstUI = true; // reset
+                            _controller.clear(); // clear text field
+                          });
+                        },
+                        child: Text(
+                            "Sound Map",
+                          style: TextStyle(
+                            fontSize: 70.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold
                           ),
+                        ),
                       ),
+                      const SizedBox(height: 70),
 
                       // Youtube URL text field
                       SizedBox(
