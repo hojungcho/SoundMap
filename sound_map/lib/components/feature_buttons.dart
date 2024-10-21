@@ -9,7 +9,7 @@ class FeatureButtons extends StatefulWidget {
 
 class _FeatureSelectorState extends State<FeatureButtons> {
   var feature = ['title', 'artist', 'tempo', 'lyric', 'first_impression']; // Feature list
-  var feature_colors = [Colors.orange, Colors.green, Colors.pink, Colors.blue, Colors.purple];
+  var featureColors = [Colors.orange, Colors.green, Colors.pink, Colors.blue, Colors.purple];
   List<String> selectedFeatures = []; // Selected feature list
 
   @override
@@ -34,7 +34,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
                       margin: EdgeInsets.all(5),
                       padding: EdgeInsets.symmetric(horizontal:  10, vertical: 5),
                       decoration: BoxDecoration(
-                        color: selectedFeatures.contains(feature[i]) ? feature_colors[i] : Colors.white,
+                        color: selectedFeatures.contains(feature[i]) ? featureColors[i] : Colors.white,
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
