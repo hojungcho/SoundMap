@@ -8,7 +8,7 @@ class FeatureButtons extends StatefulWidget {
 }
 
 class _FeatureSelectorState extends State<FeatureButtons> {
-  var feature = ['melody', 'tempo', 'bpm', 'artist', 'lyrics']; // Feature list
+  var feature = ['title', 'artist', 'tempo', 'lyric', 'first_impression']; // Feature list
   var feature_colors = [Colors.orange, Colors.green, Colors.pink, Colors.blue, Colors.purple];
   List<String> selected_feauture = []; // Selected feature list
 
