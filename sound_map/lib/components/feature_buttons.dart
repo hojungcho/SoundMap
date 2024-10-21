@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 class FeatureButtons extends StatefulWidget {
   const FeatureButtons({super.key});
