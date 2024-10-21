@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class FeatureButtons extends StatefulWidget {
   const FeatureButtons({super.key});
@@ -28,6 +32,7 @@ class _FeatureSelectorState extends State<FeatureButtons> {
                     onTap: (){
                       setState(() {
                         selectedFeatures.contains(feature[i]) ? selectedFeatures.remove(feature[i]) : selectedFeatures.add(feature[i]);
+                        _saveSelectedFeaturesToJson();
                       });
                     },
                     child: Container(
@@ -53,4 +58,22 @@ class _FeatureSelectorState extends State<FeatureButtons> {
       ),
     );
   }
+
+  void _saveSelectedFeaturesToJson() {
+    // JSON 데이터 생성
+    final jsonData = jsonEncode({'selectedFeatures': selectedFeatures});
+
+    // Blob을 생성하여 파일로 변환
+    final bytes = utf8.encode(jsonData);
+    final blob = html.Blob([bytes]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+
+    // 링크 클릭 없이 자동으로 파일 다운로드 트리거
+    html.AnchorElement(href: url)
+      ..setAttribute('download', 'selected_features.json')
+      ..click(); // 수동 클릭 없이 바로 실행
+
+    html.Url.revokeObjectUrl(url); // 메모리 해제
+  }
+
 }
