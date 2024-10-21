@@ -24,7 +24,7 @@ class _VideoListState extends State<VideoList_2> {
   Future<void> _loadJsonData() async {
     try {
       final String response =
-      await rootBundle.loadString('assets/video_info.json');
+      await rootBundle.loadString('assets/initial_recommendation.json');
       final List<dynamic> jsonData = jsonDecode(response);
       setState(() {
         _videoList = jsonData;
@@ -58,7 +58,7 @@ class _VideoListState extends State<VideoList_2> {
               DataCell(Text(video['title'],
                   style: TextStyle(color: Colors.white)
               )),
-              DataCell(Text(video['uploader'],
+              DataCell(Text(video['artist'],
                   style: TextStyle(color: Colors.white)
               )),
               DataCell(
