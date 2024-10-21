@@ -1,0 +1,36 @@
+name: sound_map
+description: A Flutter project for finding similar songs.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Include any additional dependencies here
+  cupertino_icons: ^1.0.2
+  http: ^0.13.6
+  provider: ^6.0.5
+  flutter_web_plugins:
+    sdk: flutter
+  # Add more dependencies that your app needs (e.g., Firebase, animations, etc.)
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linting and analysis
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/video_info.json
+
+  # Add any other directories or files you use, like images or fonts
+
+  # Add additional web-specific configuration (e.g., icon sizes) if necessary
