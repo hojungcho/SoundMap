@@ -127,7 +127,7 @@ class _VideoListState extends State<VideoList_1> {
                                 child: SizedBox(
                                   width: (MediaQuery.of(context).size.width * 0.4 - 200 ),
                                   child: Text(
-                                    'Uploaded by: ${video['uploader']}',
+                                    '${video['artist']}',
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                     style: TextStyle(

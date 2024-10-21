@@ -58,7 +58,7 @@ class _VideoListState extends State<VideoList_2> {
               DataCell(Text(video['title'],
                   style: TextStyle(color: Colors.white)
               )),
-              DataCell(Text(video['uploader'],
+              DataCell(Text(video['artist'],
                   style: TextStyle(color: Colors.white)
               )),
               DataCell(
