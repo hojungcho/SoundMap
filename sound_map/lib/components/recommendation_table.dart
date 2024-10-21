@@ -1,8 +1,10 @@
-import 'dart:convert'; // json decoding
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VideoList_2 extends StatefulWidget {
+
   const VideoList_2({super.key});
 
   @override
@@ -22,7 +24,7 @@ class _VideoListState extends State<VideoList_2> {
   Future<void> _loadJsonData() async {
     try {
       final String response =
-      await rootBundle.loadString('assets/video_info.json');
+      await rootBundle.loadString('assets/initial_recommendation.json');
       final List<dynamic> jsonData = jsonDecode(response);
       setState(() {
         _videoList = jsonData;
@@ -56,14 +58,23 @@ class _VideoListState extends State<VideoList_2> {
               DataCell(Text(video['title'],
                   style: TextStyle(color: Colors.white)
               )),
-              DataCell(Text(video['uploader'],
+              DataCell(Text(video['artist'],
                   style: TextStyle(color: Colors.white)
               )),
               DataCell(
-                IconButton(
-                  icon: Icon(Icons.play_circle),
-                  onPressed: (){},
-                )
+                // button
+                  IconButton(
+                    icon: Icon(Icons.play_circle),
+                    onPressed: () async {
+                      String videoId = video['id'];
+                      final String videoUrl = 'https://www.youtube.com/watch?v=$videoId';
+                      if (await canLaunchUrl(Uri.parse(videoUrl))) {
+                        await launchUrl(Uri.parse(videoUrl));
+                      } else {
+                        throw 'Could not launch $videoUrl';
+                      }
+                    },
+                  )
               ),
             ]);
           }).toList(),

@@ -1,5 +1,4 @@
 // feature filtering 기반
-
 import 'dart:convert'; // json decoding
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,8 +23,7 @@ class _VideoListState extends State<VideoList_1> {
   // assets에서 JSON 파일 불러오기
   Future<void> _loadJsonData() async {
     try {
-      // rootBundle을 통해 assets에서 파일을 불러옴
-      final String response = await rootBundle.loadString('assets/video_info.json');
+      final String response = await rootBundle.loadString('assets/recommendation.json');
       final List<dynamic> jsonData = jsonDecode(response);
       setState(() {
         _videoList = jsonData;
@@ -38,9 +36,10 @@ class _VideoListState extends State<VideoList_1> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:40.0, left: 20.0, right: 20.0),
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: SizedBox(
-          width:  MediaQuery.of(context).size.width * 0.4,
+          width:  MediaQuery.of(context).size.width * 0.5,
+          height: 450,
 
           child: _videoList.isEmpty
               ? Center(child: CircularProgressIndicator())
@@ -69,58 +68,65 @@ class _VideoListState extends State<VideoList_1> {
                       }
                     },
 
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // 썸네일 이미지
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              thumbnailUrl,
-                              width: 100,
-                              fit: BoxFit.cover,
+                    child: SizedBox(
+                      // 카드 크기
+                      width:  MediaQuery.of(context).size.width * 0.5,
+                      height: 100,
+
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        children: [
+                          // 썸네일 이미지
+                          Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset('assets/thumbnails/$videoId.jpg')
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Column(
+
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+
                               // title
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: Text(
-                                  video['title'],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: SizedBox(
+                                  width: (MediaQuery.of(context).size.width * 0.4 - 200 ),
+                                  child: Text(
+                                    video['title'],
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold
+                                    ),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 5),
-                    
+
                               // uploader
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                child: Text(
-                                  'Uploaded by: ${video['uploader']}',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.grey
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: SizedBox(
+                                  width: (MediaQuery.of(context).size.width * 0.4 - 200 ),
+                                  child: Text(
+                                    '${video['artist']}',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.grey
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

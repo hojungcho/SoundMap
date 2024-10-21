@@ -32,19 +32,22 @@ class _DesktopBodyState extends State<DesktopBody> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            /*
             const SizedBox(
               height: 30,
             ),
 
-            // Container: sound map & searchbar
+             */
+
+            // sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
-                height: 300,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: 350,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.only(bottomLeft:Radius.circular(10), bottomRight:Radius.circular(10)),
                   boxShadow: [
                     // darker shadow on bottom right
                     BoxShadow(
@@ -65,23 +68,20 @@ class _DesktopBodyState extends State<DesktopBody> {
                   padding: const EdgeInsets.all(40.0),
                   child: Column(
                     children: [
-                      InkWell(
-                        onTap: (){
-                          setState(() {
-                            _isFirstUI = true; // reset
-                            _controller.clear(); // clear text field
-                          });
-                        },
-                        child: Text(
-                            "Sound Map",
-                          style: TextStyle(
-                            fontSize: 70.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold
+                      const SizedBox(height: 10),
+                      IconButton(
+                          onPressed: (){
+                            setState(() {
+                              _isFirstUI = true;
+                              _controller.clear();
+                            });
+                          },
+                          icon: Image.asset(
+                            'assets/soundMap.png',
+                            width: 500,
+                            height: 150,
                           ),
-                        ),
                       ),
-                      const SizedBox(height: 50),
 
                       // Youtube URL text field
                       SizedBox(
@@ -96,18 +96,24 @@ class _DesktopBodyState extends State<DesktopBody> {
                               padding: const EdgeInsetsDirectional.only(end: 8.0),
                               child: Padding(
                                 padding: const EdgeInsets.all(3.0),
-                                child: TextButton(
+                                child: ElevatedButton(
                                   onPressed: () {
                                     setState(() {
                                       _isFirstUI = false;
                                     });
                                   },
-                                  style: TextButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.blueGrey),
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      foregroundColor: Colors.black,
+                                      shadowColor:Colors.black,
+                                      elevation: 10,
+                                  ),
                                   child: const Text(
                                     'Generate',
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold
+                                    ),
                                   ),
                                 ),
                               ),
@@ -132,11 +138,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
               ),
             ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height * 2,
-                child: _isFirstUI ?
-                FirstUi() : SecondUi(yt_url: _controller.text)
-            )
+            _isFirstUI ?
+            FirstUi() : SecondUi(yt_url: _controller.text)
           ],
         ),
       ),
