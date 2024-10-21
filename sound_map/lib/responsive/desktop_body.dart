@@ -36,7 +36,7 @@ class _DesktopBodyState extends State<DesktopBody> {
               height: 30,
             ),
 
-            // Container: sound map & searchbar
+            // sound map & searchbar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Container(
@@ -103,8 +103,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                                     });
                                   },
                                   style: TextButton.styleFrom(
-                                      backgroundColor: Colors.blueAccent,
-                                      foregroundColor: Colors.blueGrey),
+                                      backgroundColor: Colors.black,
+                                      foregroundColor: Colors.grey),
                                   child: const Text(
                                     'Generate',
                                     style: TextStyle(color: Colors.white),
@@ -132,11 +132,8 @@ class _DesktopBodyState extends State<DesktopBody> {
                 ),
               ),
             ),
-            SizedBox(
-                height: MediaQuery.of(context).size.height * 2,
-                child: _isFirstUI ?
-                FirstUi() : SecondUi(yt_url: _controller.text)
-            )
+            _isFirstUI ?
+            FirstUi() : SecondUi(yt_url: _controller.text)
           ],
         ),
       ),
