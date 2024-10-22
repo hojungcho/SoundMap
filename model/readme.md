@@ -52,7 +52,7 @@ Mel Spectrogram은 인간의 청각 지각과 일치하는 특징을 제공하�
 ![Vector Extraction](images/vector_extraction.png)
 ### 5.2 유사도 계산 방법
 - **코사인 유사도**: 두 벡터 간의 각도를 측정:
-$$\text{cosine\similarity} = \frac{A \cdot B}{||A|| \cdot ||B||}$$
+$$\text{cosine similarity} = \frac{A \cdot B}{||A|| \cdot ||B||}$$
 - **유클리드 거리**: 벡터 간의 직선 거리를 측정:
 $$d(A, B) = \sqrt{\sum_{i=1}^{n} (A_i - B_i)^2}$$
 ![Calculation](images/cosine_vs_euclidean.png)
@@ -61,7 +61,7 @@ $$d(A, B) = \sqrt{\sum_{i=1}^{n} (A_i - B_i)^2}$$
 ## 6. 향후 개선 방안
 - **추가적인 음성 분석 및 특징 정의**: 리듬, 템포, 음색 등을 '음악적 특징'으로 정의하여 추천의 설명력을 높일 예정.
 - **더 큰 데이터셋 사용**: fma_small을 넘어 더 큰 데이터셋을 활용하여 모델 성능을 향상.
-- **고급 아키텍처 탐색**: **Vision Transformers (ViTs)**와 같은 고급 아키텍처 탐구.
+- **고급 아키텍처 탐색**: **Vision Transformers**와 같은 고급 아키텍처 탐구.
 - **개인화 및 적응형 추천**: 사용자 피드백을 통합하여 맞춤형 추천 제공.
 ![SoundMap Recommendation Flow](images/dual_filter_recommend.png)
 
