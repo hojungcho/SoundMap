@@ -52,7 +52,7 @@ Mel Spectrogram은 인간의 청각 지각과 일치하는 특징을 제공하�
 ![Vector Extraction](images/vector_extraction.png)
 ### 5.2 유사도 계산 방법
 - **코사인 유사도**: 두 벡터 간의 각도를 측정:
-$$\text{cosine\_similarity} = \frac{A \cdot B}{||A|| \cdot ||B||}$$
+$$\text{cosine\similarity} = \frac{A \cdot B}{||A|| \cdot ||B||}$$
 - **유클리드 거리**: 벡터 간의 직선 거리를 측정:
 $$d(A, B) = \sqrt{\sum_{i=1}^{n} (A_i - B_i)^2}$$
 ![Calculation](images/cosine_vs_euclidean.png)
