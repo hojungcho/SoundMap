@@ -21,8 +21,8 @@ Mel Spectrogram은 인간의 청각 지각과 일치하는 특징을 제공하�
 
 ## 2. 데이터셋 및 전처리
 ### 2.1 데이터 선정 / 모델 선정 과정
-- **GTZAN Dataset(1,000 tracks, 8 balanced genre)**: [GTZAN Music Genre Dataset]([http://marsyas.info/downloads/datasets.html](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification))
-- **FMA Small Dataset(1,000 tracks, 10 balanced genre)**: [FMA: A Dataset For Music Analysis](https://github.com/mdeff/fma)
+- **GTZAN Dataset(1,000 tracks, 8 balanced genre)**: [GTZAN Music Genre Dataset](https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification))
+- **FMA Small Dataset(8,000 tracks, 10 balanced genre)**: [FMA: A Dataset For Music Analysis](https://github.com/mdeff/fma)
 
 | Step | Dataset | Feature Extraction | Model | Accuracy | Notes |
 |------|---------|--------------------|-------|----------|-------|
