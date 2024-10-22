@@ -27,8 +27,8 @@ Mel Spectrogram은 인간의 청각 지각과 일치하는 특징을 제공하�
 | Step | Dataset | Feature Extraction | Model | Accuracy | Notes |
 |------|---------|--------------------|-------|----------|-------|
 | 1    | GTZAN (1000 songs) | 20 feature values | DNN | 93.5% | High accuracy, but too many features make explainable recommendations difficult. |
-| 2    | GTZAN (1000 songs) | MFCC (12), Data Augmentation | CNN | 81.1% | Decided to increase dataset size for further improvement. |
-| 3    | FMA (8000 songs) | MFCC (12) | CNN | 48.9% | Unable to capture complex patterns in contemporary music. |
+| 2    | GTZAN (1000 songs) | MFCCs, Data Augmentation | CNN | 81.1% | Decided to increase dataset size for further improvement. |
+| 3    | FMA (8000 songs) | MFCCs | CNN | 58.9% | Unable to capture complex patterns in contemporary music. |
 | 4    | FMA (8000 songs) | Mel Spectrogram (gray-scale), 128x128 slices | CNN | 95.3% | Final model selected; captures diverse patterns despite complex architecture. |
 ### 2.2 데이터 전처리
 ![FMA Dataset](images/fma_overview.png)
