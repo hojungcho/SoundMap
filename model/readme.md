@@ -1,4 +1,4 @@
-# :trophy: 2024 NIPA-GOOGLE BootCamp 협력 실무 프로젝트(3기) 최우수상 :trophy:
+## :trophy: 2024 NIPA-GOOGLE BootCamp 협력 실무 프로젝트(3기) 최우수상 :trophy:
 
 
 # Mel Spectrogram과 CNN 기반 장르 분류 모델을 활용한 음악 추천 시스템
