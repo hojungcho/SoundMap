@@ -3,7 +3,6 @@
 
 # Mel Spectrogram과 CNN 기반 장르 분류 모델을 활용한 음악 추천 시스템
 
-### NIPA-Google ML 부트캠프 협력 실무 프로젝트 과정 (3기)
 Team **SoundMap** - Jeeho Lim
 
 ## 요약
